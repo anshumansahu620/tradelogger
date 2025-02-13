@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Stocks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stock-container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .stock-box {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .stock-box:hover {
+            transform: scale(1.02);
+        }
+
+        .stock-detail {
+            display: block;
+            font-size: 16px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .stock-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        small {
+            color: #777;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stock-container">
+        <h2>Available Stocks</h2>
+        <% if (stock.length > 0) { %>
+            <% stock.forEach(stock => { %>
+                <div class="stock-box">
+                    <span class="stock-name"><strong>Stock Name:</strong> <%= stock.name %></span>
+                    <span class="stock-detail"><strong>Price:</strong> ₹<%= stock.price %></span>
+                    <span class="stock-detail"><strong>Profit:</strong> ₹<%= stock.profit %></span>
+                    <small>Added on: <%= stock.created_at.toDateString() %></small>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p><strong>No stocks available.</strong></p>
+        <% } %>
+    </div>
+</body>
+</html>
