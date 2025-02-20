@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save to DB</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; 
+        }
+        .form-container {
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+            background-color: rgba(48, 47, 47, 0.597); 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        .form-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: rgba(256, 256, 256, 0.1);
+            border-radius: 4px;
+        }
+        .form-group button {
+            
+            width: 50%;
+            padding: 10px;
+            background-color: rgba(175, 13, 203, 0.7); 
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: rgba(105, 6, 132, 0.9); 
+        }
+        #BACKGROUND {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        a{
+            color: rgb(103, 148, 154);
+            font-family: 'Arial', sans-serif;
+            margin-left: 15%;
+
+        }
+        a:hover{
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="BACKGROUND"></div>
+    <div class="form-container">
+        <h2 style="color: white;">Login</h2>
+        <form method="post" action="/login">
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Password</label>
+                <input type="password" id="email" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+                <a href="http://localhost:3000/createaccount">create account</a>
+            </div>
+           
+        </form>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.globe.min.js"></script>
+    <script>
+    VANTA.GLOBE({
+      el: "#BACKGROUND",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00
+    });
+    </script>
+</body>
+</html>

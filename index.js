@@ -1,6 +1,8 @@
 const express=require("express")
+
 const mongoose=require("mongoose")
 const Stock=require("./models/Stock")
+const User=require("./models/User")
 const app=express();
 const port=3000;
 const path=require("path")
@@ -58,11 +60,21 @@ app.post("/stocks",(req,res)=>{
     })
     res.redirect("/stocks")
 })
+app.post("/login",(req,res)=>{
+    let {username,Password}=req.body;
+    
+})
 
 
 app.get("/",(req,res)=>{
     res.render("homepage.ejs")
     
+})
+app.get("/login",(req,res)=>{
+    res.render("login.ejs")
+})
+app.get("/createaccount",(req,res)=>{
+    res.render("createaccount.ejs")
 })
 app.listen(port,(req,res)=>{
     console.log("http://localhost:3000/")
