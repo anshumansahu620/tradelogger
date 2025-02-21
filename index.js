@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 async function main(){
     mongoose.connect("mongodb://127.0.0.1:27017/tradelogger") 
-}
+} 
 main().then(
     (res)=>{
         console.log("connected sucessfully to server")
@@ -30,8 +30,7 @@ main().then(
 app.get('/stocks', async (req, res) => {
     try {
         let stock = await Stock.find();
-        res.render('stocks.ejs', { stock }); // Renders the chats.ejs file
-        console.log(stock)
+        res.render('stocks.ejs', { stock }); 
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -70,6 +69,26 @@ app.get("/",(req,res)=>{
     res.render("homepage.ejs")
     
 })
+app.get("/home",(req,res)=>{
+    res.render("homepage.ejs")
+    
+})
+app.post("/home",(req,res)=>{
+    let {username,email,password}=req.body;
+    let userdata=new User({
+        username:username,
+        email:email,
+        password:password,
+
+    })
+    userdata.save(userdata).then(()=>{
+        console.log("saved"+userdata)
+    })
+    .catch((error)=>{
+        console.log(error)
+        })
+        res.redirect("/home")
+})
 app.get("/login",(req,res)=>{
     res.render("login.ejs")
 })
@@ -79,4 +98,5 @@ app.get("/createaccount",(req,res)=>{
 app.listen(port,(req,res)=>{
     console.log("http://localhost:3000/")
     
+
 })
